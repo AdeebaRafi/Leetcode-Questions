@@ -1,10 +1,12 @@
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
-        if len(nums)== 1:
-            return nums[0]
-        newset=set(nums)
-        print(newset)
-        print(type(newset))
-        for i in newset:
-            if nums.count(i) == 1:
-                return i
+        count = {}  #Dictionary
+        for num in nums:
+            if num in count:
+                count[num] += 1
+            else:
+                count[num] = 1
+
+        for num in count:
+            if count[num] == 1:
+                return num
